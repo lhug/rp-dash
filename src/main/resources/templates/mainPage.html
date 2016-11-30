@@ -1,0 +1,33 @@
+<html xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect"
+	xmlns:th="http://www.thymeleaf.org" layout:decorator="/layout">
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="page-header">
+					<h1 th:text="#{main.heading}">PAGE HEADING</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-8">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<span>PANEL TEXT</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<span>SIDE PANEL HEADER</span>
+					</div>
+					<div class="panel-body">
+						<span>SIDE PANEL BODY</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

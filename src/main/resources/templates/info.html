@@ -1,0 +1,175 @@
+<html xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.springframework.org/security/tags"
+	layout:decorator="/layout">
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="page-header">
+					<h1>
+						<span th:text="#{info.main.heading}">INFOS FOR PLAYERS</span> <span
+							class="pull-right" sec:authorize="hasRole('ADMIN')"><button
+								type="button" class="btn btn-primary btn-md" data-toggle="modal"
+								data-target="#addEntryModal" th:text="#{info.entry.add}">Add
+								Entry</button></span>
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="active"><a href="#worldInfo" role="tab"
+						data-toggle="tab" th:text="#{info.tab.title.world}">WORLD</a></li>
+					<li><a href="#gameInfo" role="tab" data-toggle="tab"
+						th:text="#{info.tab.title.game}">GAME</a></li>
+					<li><a href="#timelineInfo" role="tab" data-toggle="tab"
+						th:text="#{info.tab.title.timeline}">TIMELINE</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="tab-content">
+			<div class="tab-pane active" id="worldInfo">
+				<div class="panel-group" role="tablist" id="world"
+					th:each="worldEntry, worldStat : ${worldEntries}">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab"
+							th:id="'world_heading_' + ${worldStat.count}">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#world" th:href="'#world_' + ${worldStat.count}"
+									th:text="${worldEntry.topic}">WORLD_1</a>
+							</h4>
+						</div>
+						<div th:id="'world_' + ${worldStat.count}"
+							class="panel-collapse collapse" role="tabpanel">
+							<div class="panel-body">
+								<p th:utext="${worldEntry.content}">CONTENT</p>
+								<hr />
+								<span class="pull-left"> <small
+									th:text="#{info.entry.created}">CREATED</small> <span
+									th:text="${worldEntry.createdAt}">AT</span>
+								</span> <span class="pull-right"> <small
+									th:text="#{info.entry.created.by}">CREATED</small> <span
+									th:text="${worldEntry.createdBy}">BY</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="gameInfo">
+				<div class="panel-group" role="tablist" id="game"
+					th:each="gameEntry, gameStat : ${gameEntries}">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab"
+							th:id="'game_heading_' + ${gameStat.count}">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#game" th:href="'#game_' + ${gameStat.count}"
+									th:text="${gameEntry.topic}">GAME_1</a>
+							</h4>
+						</div>
+						<div th:id="'game_' + ${gameStat.count}" class="panel-collapse collapse"
+							role="tabpanel">
+							<div class="panel-body">
+								<p th:utext="${gameEntry.content}">CONTENT</p>
+								<hr />
+								<span class="pull-left"> <small
+									th:text="#{info.entry.created}">CREATED</small> <span
+									th:text="${gameEntry.createdAt}">AT</span>
+								</span> <span class="pull-right"> <small
+									th:text="#{info.entry.created.by}">CREATED</small> <span
+									th:text="${gameEntry.createdBy}">BY</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane" id="timelineInfo">
+				<div class="panel-group" role="tablist" id="timeline"
+					th:each="timelineEntry, timelineStat : ${timelineEntries}">
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab"
+							th:id="'timeline_heading_' + ${timelineStat.count}">
+							<h4 class="panel-title">
+								<a class="collapsed" role="button" data-toggle="collapse"
+									data-parent="#timeline" th:href="'#timeline_' + ${timelineStat.count}"
+									th:text="${timelineEntry.topic}">TIMELINE_1</a>
+							</h4>
+						</div>
+						<div th:id="'timeline_' + ${timelineStat.count}"
+							class="panel-collapse collapse" role="tabpanel">
+							<div class="panel-body">
+								<p th:utext="${timelineEntry.content}">CONTENT</p>
+								<hr />
+								<span class="pull-left"> <small
+									th:text="#{info.entry.created}">CREATED</small> <span
+									th:text="${timelineEntry.createdAt}">AT</span>
+								</span> <span class="pull-right"> <small
+									th:text="#{info.entry.created.by}">CREATED</small> <span
+									th:text="${timelineEntry.createdBy}">BY</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="addEntryModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<form id="infoEntry" method="post"
+						th:action="@{/backgrounds/info/addEntry}" th:object="${newEntry}">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">ADD ENTRY</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="entryTopic"><span
+									th:text="#{info.entry.add.modal.topic}">TOPIC</span></label> <input
+									type="text" class="form-control" name="topic" id="entryTopic"
+									th:placeholder="#{info.entry.add.modal.topic.placeholder}" />
+							</div>
+							<div class="form-group">
+								<label for="entryContent"><span
+									th:text="#{info.entry.add.modal.content}">ENTRYTEXT</span></label>
+								<textarea id="entryContent" name="content"
+									th:placeholder="#{info.entry.add.modal.content.placeholder}"
+									class="form-control"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="entryType"><span
+									th:text="#{info.entry.add.modal.type}">TYPE</span></label> <select
+									id="entryType" name="type">
+									<option value="GAME"
+										th:text="#{info.entry.add.modal.type.game}">GAME</option>
+									<option value="WORLD"
+										th:text="#{info.entry.add.modal.type.world}">WORLD</option>
+									<option value="TIMELINE"
+										th:text="#{info.entry.add.modal.type.timeline}">TIMELINE</option>
+								</select>
+							</div>
+							<input type="hidden" name="createdBy"
+								th:value="${#authentication.name}" />
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">Save
+								changes</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
