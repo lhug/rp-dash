@@ -31,9 +31,8 @@
 		</div>
 		<div class="tab-content">
 			<div class="tab-pane active" id="worldInfo">
-				<div class="panel-group" role="tablist" id="world"
-					th:each="worldEntry, worldStat : ${worldEntries}">
-					<div class="panel panel-default">
+				<div class="panel-group" role="tablist" id="world">
+					<div class="panel panel-default" th:each="worldEntry, worldStat : ${worldEntries}">
 						<div class="panel-heading" role="tab"
 							th:id="'world_heading_' + ${worldStat.count}">
 							<h4 class="panel-title">
@@ -60,9 +59,8 @@
 				</div>
 			</div>
 			<div class="tab-pane" id="gameInfo">
-				<div class="panel-group" role="tablist" id="game"
-					th:each="gameEntry, gameStat : ${gameEntries}">
-					<div class="panel panel-default">
+				<div class="panel-group" role="tablist" id="game">
+					<div class="panel panel-default" th:each="gameEntry, gameStat : ${gameEntries}">
 						<div class="panel-heading" role="tab"
 							th:id="'game_heading_' + ${gameStat.count}">
 							<h4 class="panel-title">
@@ -89,9 +87,8 @@
 				</div>
 			</div>
 			<div class="tab-pane" id="timelineInfo">
-				<div class="panel-group" role="tablist" id="timeline"
-					th:each="timelineEntry, timelineStat : ${timelineEntries}">
-					<div class="panel panel-default">
+				<div class="panel-group" role="tablist" id="timeline">
+					<div class="panel panel-default" th:each="timelineEntry, timelineStat : ${timelineEntries}">
 						<div class="panel-heading" role="tab"
 							th:id="'timeline_heading_' + ${timelineStat.count}">
 							<h4 class="panel-title">
