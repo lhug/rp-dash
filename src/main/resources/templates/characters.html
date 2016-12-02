@@ -5,7 +5,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="page-header">
-					<h1>CHARACTERS</h1>
+					<h1 th:text="#{backgrounds.characters.heading}">CHARACTERS</h1>
 				</div>
 			</div>
 		</div>
@@ -20,15 +20,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><span>Xue Yuen Da</span></td>
-							<td><span>Fields of Despair</span></td>
-							<td><button class="btn btn-sm" type="button">Show</button></td>
-						</tr>
-						<tr>
-							<td><span>Xiao Ming</span></td>
-							<td><span>Bloodlines</span></td>
-							<td><button class="btn btn-sm" type="button">Show</button></td>
+						<tr th:each="char : ${characters}">
+							<td><span th:text="${char.name}">NAME</span></td>
+							<td><span th:text="${char.chronicle}">CHRONICLE</span></td>
+							<td><button class="btn btn-sm" type="button" th:text="#{backgrounds.characters.button.show}" th:data="${char.chronicle}/${char.name}">Show</button></td>
 						</tr>
 					</tbody>
 				</table>
