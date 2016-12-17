@@ -1,0 +1,105 @@
+<html xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" />
+</head>
+<body>
+	<section layout:fragment="fragments">
+		<div class="modal fade" tabindex="-1" role="dialog" id="char">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">CharSheet</h4>
+					</div>
+					<div class="modal-body">
+						<div>
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#p0" aria-controls="p0" role="tab" data-toggle="tab">Overview</a></li>
+								<li role="presentation"><a href="#p1" aria-controls="p1" role="tab" data-toggle="tab">P1</a></li>
+								<li><a href="#p2" aria-controls="p2" role="tab" data-toggle="tab">P2</a></li>
+								<li><a href="#p3" aria-controls="p3" role="tab" data-toggle="tab">P3</a></li>
+								<li><a href="#p4" aria-controls="p4" role="tab" data-toggle="tab">P4</a></li>
+							</ul>
+						</div>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="p0">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Character Infos</h4>
+									</div>
+									<div class="panel-body">
+										<form>
+											<div class="form-group">
+												<label for="charName">CHARACTER NAME</label>
+												<input id="charName" class="form-control" name="name" placeholder="name" value="Xue Yuen Da" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="userName">USER NAME</label>
+												<input id="userName" class="form-control" name="user" placeholder="user" value="Dood!" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="chronicle">CHRONICLE</label>
+												<input id="chronicle" class="form-control" name="chronicle" placeholder="chronicle" value="Faces of Dread" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="nature">NATURE</label>
+												<input id="nature" class="form-control" name="nature" placeholder="nature" value="Child" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="poNature">PO NATURE</label>
+												<input id="poNature" class="form-control" name="poNature" placeholder="P'o Nature" value="The Monkey" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="demeanor">DEMEANOR</label>
+												<input id="demeanor" class="form-control" name="demeanor" placeholder="demeanor" value="Teacher" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="balance">BALANCE</label>
+												<input id="balance" class="form-control" name="balance" placeholder="balance" value="Yin" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="direction">DIRECTION</label>
+												<input id="direction" class="form-control" name="direction" placeholder="direction" value="South" disabled="disabled" />
+											</div>
+											<div class="form-group">
+												<label for="wu">WU</label>
+												<input id="wu" name="wu" class="form-control" placeholder="wu" value="Phoenix Blossom" disabled="disabled" />
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="p1">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4>Abilities</h4>
+									</div>
+									<div class="panel-body">
+										<table>
+											<tbody>
+												<tr>
+													<td><span>Athletics</span></td>
+													<td><span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+	</section>
+</body>
+</html>

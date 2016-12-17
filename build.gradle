@@ -35,6 +35,7 @@ dependencies {
 	
 	runtime('org.webjars:bootstrap:3.3.6')
 	runtime('org.webjars.npm:jqueryui:1.11.1')
+	runtime('org.webjars:font-awesome:4.7.0')
 	
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.50.5')

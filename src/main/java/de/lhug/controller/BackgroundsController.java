@@ -1,5 +1,6 @@
 package de.lhug.controller;
 
+import java.util.Collections;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import de.lhug.entities.Character;
 import de.lhug.entities.Entry;
 import de.lhug.service.InfoService;
 
@@ -40,7 +42,16 @@ public class BackgroundsController {
 	}
 
 	@RequestMapping("/characters")
-	public String showCharacters() {
+	public String showCharacters(Model model) {
+		Character character = new Character();
+		character.setChronicle("aChronicle");
+		character.setName("Hun Po");
+		model.addAttribute("characters", Collections.singletonList(character));
 		return "characters";
+	}
+
+	@RequestMapping("/characters/{chronicle}/{character}")
+	public String showCharacterFragment() {
+		return "fragments/charSheet";
 	}
 }

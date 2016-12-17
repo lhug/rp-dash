@@ -1,5 +1,8 @@
 <html xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect"
 	xmlns:th="http://www.thymeleaf.org" layout:decorator="/layout">
+<head>
+	<script type="text/javascript" th:src="@{/js/characters.js}" src="../static/js/characters.js"></script>
+</head>
 <body>
 	<section layout:fragment="content">
 		<div class="row">
@@ -23,7 +26,9 @@
 						<tr th:each="char : ${characters}">
 							<td><span th:text="${char.name}">NAME</span></td>
 							<td><span th:text="${char.chronicle}">CHRONICLE</span></td>
-							<td><button class="btn btn-sm" type="button" th:text="#{backgrounds.characters.button.show}" th:data="${char.chronicle}/${char.name}">Show</button></td>
+							<td><button class="btn btn-sm btn-charsheet" type="button"
+									th:text="#{backgrounds.characters.button.show}"
+									th:data="@{characters/{chronicle}/{name}(chronicle=${char.chronicle}, name=${char.name})}">Show</button></td>
 						</tr>
 					</tbody>
 				</table>

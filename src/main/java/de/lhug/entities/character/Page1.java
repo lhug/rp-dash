@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import de.lhug.entities.enums.DemonCharacteristic;
 import de.lhug.entities.enums.Knowledges;
@@ -16,9 +17,9 @@ public class Page1 {
 	private Map<String, Integer> physical;
 	private Map<String, Integer> social;
 	private Map<String, Integer> mental;
-	private List<Skills> skills = new ArrayList<>();
-	private List<Talents> talents = new ArrayList<>();
-	private List<Knowledges> knowledges = new ArrayList<>();
+	private Map<Skills, Integer> skills = new TreeMap<>();
+	private Map<Talents, Integer> talents = new TreeMap<>();
+	private Map<Knowledges, Integer> knowledges = new TreeMap<>();
 
 	private List<IDiscipline> disciplines = new ArrayList<>();
 
