@@ -89,35 +89,53 @@
 													</div>
 													<div id="soulInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledBy="#soulInfoHeading">
 														<div class="panel-body">
-															<table width="100%">
-																<tr>
-																	<th colspan="2">
-																		SOUL
-																	</th>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="form-group">
-																			<label for="hunValue">HUN VALUE</label>
-																			<input type="hidden" id="hunValue" name="page1.hun" value="3" />
-																		</div>
-																	</td>
-																	<td>
-																		<span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 3} ? 'fa-circle' : 'fa-circle-thin'"></span>
-																	</td>
-																</tr>
-																<tr>
-																	<td>
-																		<div class="form-group">
-																			<label for="poValue">PO VALUE</label>
-																			<input type="hidden" id="poValue" name="page1.po" value="5" />
-																		</div>
-																	</td>
-																	<td>
-																		<span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 5} ? 'fa-circle' : 'fa-circle-thin'"></span>
-																	</td>
-																</tr>
-															</table>
+															<div class="list-group">
+																<div class="list-group-item active">
+																	<h4 class="list-group-item-heading">SOUL BALANCE</h4>
+																</div>
+																<div class="list-group-item">
+																	<div>
+																		<label for="hunValue">HUN VALUE</label> <span class="pull-right"> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa"
+																			th:classappend="${int le 3} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																		</span> <input type="hidden" id="hunValue" name="page1.hun" value="3" />
+																	</div>
+																	<div>
+																		<label for="poValue">PO VALUE</label> <span class="pull-right"> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa"
+																			th:classappend="${int le 5} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																		</span> <input type="hidden" id="poValue" name="page1.po" value="5" />
+																	</div>
+																</div>
+																<div class="list-group-item active">
+																	<h4 class="list-group-item-heading">CHI BALANCE</h4>
+																</div>
+																<div class="list-group-item">
+																	<div>
+																		<label for="yinChi">YIN CHI</label> <span class="pull-right"> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa"
+																			th:classappend="${int le 4} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																		</span> <input type="hidden" id="yinChi" name="page1.yin" value="4" />
+																	</div>
+																	<div>
+																		<label for="yangChi">YANG CHI</label> <span class="pull-right"> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa"
+																			th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																		</span> <input type="hidden" id="yangChi" name="page1.yang" value="2" />
+																	</div>
+																</div>
+																<div class="list-group-item active">
+																	<h4 class="list-group-item-heading">WILL BALANCE</h4>
+																</div>
+																<div class="list-group-item">
+																	<div>
+																		<label for="willpower">WILLPOWER</label> <span class="pull-right"> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa"
+																			th:classappend="${int le 7} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																		</span> <input type="hidden" id="willpower" name="page1.willpower" value="7" />
+																	</div>
+																	<div>
+																		<label for="dharmaScore">DHARMA TYPE</label> <span class="pull-right"> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa"
+																			th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																		</span> <input type="hidden" id="dharmaScore" name="page1.dharma" value="2" />
+																	</div>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -126,19 +144,87 @@
 									</div>
 								</div>
 								<div role="tabpanel" class="tab-pane" id="p1">
-									<div class="panel panel-default">
-										<div class="panel-heading">
-											<h4>Abilities</h4>
+									<div class="panel-group" id="abilities" role="tablist">
+										<div class="panel panel-default">
+											<div class="panel-heading" id="talentsHeading" role="tab">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" data-parent="#abilities" href="#talents">TALENTS</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse in" id="talents" role="tabpanel">
+												<div class="panel-body">
+													<div class="list-group">
+														<div class="list-group-item">
+															<label for="athletics">ATHLETICS</label>
+															<span class="pull-right">
+																<span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+															</span>
+															<input type="hidden" id="athletics" name="athletics" value="2" />
+														</div>
+														<div class="list-group-item">
+															<label for="dodge">DODGE</label>
+															<span class="pull-right">
+																<span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 4} ? 'fa-circle' : 'fa-circle-thin'"></span>
+															</span>
+															<input type="hidden" id="dodge" name="dodge" value="4" />
+														</div>
+														<div class="list-group-item">
+															<label for="leadership">LEADERSHIP</label>
+															<span class="pull-right">
+																<span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 3} ? 'fa-circle' : 'fa-circle-thin'"></span>
+															</span>
+															<input type="hidden" id="leadership" name="leadership" value="3" />
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
-										<div class="panel-body">
-											<table>
-												<tbody>
-													<tr>
-														<td><span>Athletics</span></td>
-														<td><span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span></td>
-													</tr>
-												</tbody>
-											</table>
+										<div class="panel panel-default">
+											<div class="panel-heading" id="skillsHeading" role="tab">
+												<h4 class="panel-title">
+													<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#skills">SKILLS</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse" id="skills" role="tabpanel">
+												<div class="panel-body">
+													<div class="list-group">
+														<div class="list-group-item">
+															<label for="crafts1">CRAFTS (SEWING)</label>
+															<span class="pull-right">
+																<span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 4} ? 'fa-circle' : 'fa-circle-thin'"></span>
+															</span>
+															<input type="hidden" id="crafts1" name="crafts1" value="4" />
+														</div>
+														<div class="list-group-item">
+															<label for="crafts2">CRAFTS (CHI-WEAVING)</label>
+															<span class="pull-right">
+																<span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+															</span>
+															<input type="hidden" id="crafts2" name="crafts2" value="2" />
+														</div>
+														<div class="list-group-item">
+															<label for="martialArts1">MARTIAL ARTS (SOFT)</label>
+															<span class="pull-right">
+																<span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 5} ? 'fa-circle' : 'fa-circle-thin'"></span>
+															</span>
+															<input type="hidden" id="martialArts1" name="martialArts1" value="5" />
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" id="knowledgesHeading" role="tab">
+												<h4 class="panel-title">
+													<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#knowledges">KNOWLEDGES</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse" id="knowledges" role="tabpanel">
+												<div class="panel-body">
+													<div class="list-group">
+													</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>

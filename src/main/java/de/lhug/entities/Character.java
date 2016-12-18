@@ -23,7 +23,6 @@ public class Character {
 	private String direction;
 	private String wu;
 	private Dharma dharma;
-	private int dharmaScore;
 
 	private List<Dharma> lostDharmas = new ArrayList<>();
 
@@ -129,14 +128,6 @@ public class Character {
 
 	public Dharma getDharma() {
 		return dharma;
-	}
-
-	public int getDharmaScore() {
-		return dharmaScore;
-	}
-
-	public void setDharmaScore(int dharmaScore) {
-		this.dharmaScore = dharmaScore;
 	}
 
 }
