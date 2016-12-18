@@ -88,27 +88,27 @@ public class Page1 {
 		this.mental = mental;
 	}
 
-	public List<Skills> getSkills() {
+	public Map<Skills, Integer> getSkills() {
 		return skills;
 	}
 
-	public void setSkills(List<Skills> skills) {
+	public void setSkills(Map<Skills, Integer> skills) {
 		this.skills = skills;
 	}
 
-	public List<Talents> getTalents() {
+	public Map<Talents, Integer> getTalents() {
 		return talents;
 	}
 
-	public void setTalents(List<Talents> talents) {
+	public void setTalents(Map<Talents, Integer> talents) {
 		this.talents = talents;
 	}
 
-	public List<Knowledges> getKnowledges() {
+	public Map<Knowledges, Integer> getKnowledges() {
 		return knowledges;
 	}
 
-	public void setKnowledges(List<Knowledges> knowledges) {
+	public void setKnowledges(Map<Knowledges, Integer> knowledges) {
 		this.knowledges = knowledges;
 	}
 

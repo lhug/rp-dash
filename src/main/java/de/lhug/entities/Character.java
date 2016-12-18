@@ -23,8 +23,9 @@ public class Character {
 	private String direction;
 	private String wu;
 	private Dharma dharma;
+	private int dharmaScore;
 
-	private List<String> lostDharmas = new ArrayList<>();
+	private List<Dharma> lostDharmas = new ArrayList<>();
 
 	public String getId() {
 		return id;
@@ -114,15 +115,28 @@ public class Character {
 		this.wu = wu;
 	}
 
-	public List<String> getLostDharmas() {
+	public List<Dharma> getLostDharmas() {
 		return lostDharmas;
 	}
 
-	public void setLostDharmas(List<String> lostDharmas) {
+	public void setLostDharmas(List<Dharma> lostDharmas) {
 		this.lostDharmas = lostDharmas;
 	}
 
 	public void setDharma(Dharma dharma) {
 		this.dharma = dharma;
 	}
+
+	public Dharma getDharma() {
+		return dharma;
+	}
+
+	public int getDharmaScore() {
+		return dharmaScore;
+	}
+
+	public void setDharmaScore(int dharmaScore) {
+		this.dharmaScore = dharmaScore;
+	}
+
 }
