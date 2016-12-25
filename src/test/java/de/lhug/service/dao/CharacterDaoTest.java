@@ -2,6 +2,7 @@ package de.lhug.service.dao;
 
 import static org.junit.Assert.fail;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(classes = CharacterDaoTest.TestConfiguration.class)
 @EnableAutoConfiguration
 @TestPropertySource(properties = { "spring.data.mongodb.port=27019" })
+@Ignore
 public class CharacterDaoTest {
 
 	static class TestConfiguration {

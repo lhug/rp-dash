@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.either;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.Matchers.hasProperty;
@@ -40,7 +41,7 @@ import de.lhug.utils.MongoUtils;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ChronicleDaoTest.TestConfiguration.class)
 @EnableAutoConfiguration
-@TestPropertySource(properties = { "spring.data.mongodb.port=27019" })
+@TestPropertySource(properties = { "spring.data.mongodb.port=27021" })
 public class ChronicleDaoTest {
 
 	public static class TestConfiguration {
@@ -105,7 +106,7 @@ public class ChronicleDaoTest {
 
 		sut.updateChronicle(c1);
 
-		Chronicle result = mongoOperations.findOne(Query.query(Criteria.where("name").is("chronicle_1")),
+		Chronicle result = mongoOperations.findOne(Query.query(Criteria.where("_id").is(c1.getId())),
 				Chronicle.class);
 
 		assertThat(result.getName(), is("chronicle_1"));
@@ -133,5 +134,15 @@ public class ChronicleDaoTest {
 		List<Chronicle> result = sut.getChronicles();
 
 		assertThat(result.size(), equalTo(expected.size()));
+	}
+	
+	@Test
+	public void insertChronicle() {
+		Chronicle preCheck = mongoOperations.findOne(Query.query(Criteria.where("name").is("aNewTestisBorn")), Chronicle.class);
+		assertThat(preCheck, is(nullValue()));
+		
+		sut.insertChronicle(new Chronicle("aNewTestisBorn"));
+		
+		assertThat(mongoOperations.findOne(Query.query(Criteria.where("name").is("aNewTestisBorn")), Chronicle.class), is(not(nullValue())));
 	}
 }

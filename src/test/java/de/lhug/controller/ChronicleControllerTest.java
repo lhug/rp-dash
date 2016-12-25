@@ -19,6 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 
@@ -75,6 +76,7 @@ public class ChronicleControllerTest {
 		mockMvc.perform(get(url))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("chronicles", everyItem(isA(Chronicle.class))))
+				.andExpect(model().attribute("newChronicle", isA(Chronicle.class)))
 				.andExpect(view().name("chronicleOverview"));
 
 		verify(chronicleDao).getChronicles();
@@ -87,7 +89,7 @@ public class ChronicleControllerTest {
 
 		mockMvc.perform(postRequest(url))
 				.andExpect(status().is3xxRedirection())
-				.andExpect(view().name("redirect:/chronicle"));
+				.andExpect(view().name("redirect:/chronicle/chronicleName"));
 
 		verify(infoService).storeEntry(entryCaptor.capture());
 		verify(chronicleDao).updateChronicle(chronicleCaptor.capture());
@@ -123,12 +125,12 @@ public class ChronicleControllerTest {
 		mockMvc.perform(get(url))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("chronicle", hasProperty("name", is("chronicleName"))))
-				.andExpect(model().attribute("newChronicleEntry", isA(Entry.class)));
+				.andExpect(model().attribute("newChronicleEntry", isA(Entry.class)))
+				.andExpect(model().attribute("newChronicleEntry", hasProperty("type", is(EntryType.CHRONICLE))));
 
 		verify(chronicleDao).getChronicle("chronicleName");
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void addChronicle() throws Exception {
 		String url = "/chronicle/new";
@@ -137,10 +139,10 @@ public class ChronicleControllerTest {
 				.andExpect(status().is3xxRedirection())
 				.andExpect(redirectedUrl("/chronicle/chronicleName"));
 
-		verify(chronicleDao).updateChronicle(chronicleCaptor.capture());
+		verify(chronicleDao).insertChronicle(chronicleCaptor.capture());
 
 		Chronicle result = chronicleCaptor.getValue();
 		assertThat(result.getName(), is("chronicleName"));
-		assertThat(result.getBeginDate(), is(new Date("09/11/2001")));
+		assertThat(result.getBeginDate(), is(new SimpleDateFormat("MM/dd/yyyy").parse("09/11/2001")));
 	}
 }

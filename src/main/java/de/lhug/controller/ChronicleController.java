@@ -1,5 +1,8 @@
 package de.lhug.controller;
 
+import java.util.Map;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +29,15 @@ public class ChronicleController {
 
 	@Autowired
 	private ChronicleDao chronicleDao;
+	
+	@ModelAttribute
+	public void initChronicle(@PathVariable Map<String, String> pathVariables, Model model) {
+		String chronicleName = pathVariables.get("chronicleName");
+		if (StringUtils.isNotBlank(chronicleName)){
+			Chronicle chronicle = chronicleDao.getChronicle(chronicleName);
+			model.addAttribute(chronicle);
+		}
+	}
 
 	@RequestMapping
 	public String showOverview(Model model) {
@@ -36,7 +48,6 @@ public class ChronicleController {
 
 	@RequestMapping("/{chronicleName}")
 	public String showChroniclesPage(Model model, @PathVariable String chronicleName) {
-		model.addAttribute("chronicle", chronicleDao.getChronicle(chronicleName));
 		model.addAttribute("newChronicleEntry", new Entry(EntryType.CHRONICLE));
 		return TARGET_PAGE;
 	}
@@ -64,7 +75,7 @@ public class ChronicleController {
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String addChronicle(@ModelAttribute Chronicle chronicle) {
 		String name = chronicle.getName();
-		chronicleDao.updateChronicle(chronicle);
+		chronicleDao.insertChronicle(chronicle);
 		return String.format("redirect:/chronicle/%s", name);
 	}
 

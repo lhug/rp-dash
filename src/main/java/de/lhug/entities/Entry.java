@@ -22,6 +22,7 @@ public class Entry {
 	private String createdBy;
 
 	public Entry() {
+		// explicit default constructor
 	}
 
 	public Entry(EntryType type) {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -30,7 +31,10 @@ public class ChronicleDaoImpl implements ChronicleDao {
 	@Override
 	public void updateChronicle(Chronicle chronicle) {
 		Assert.notNull(chronicle);
-		mongoOperations.save(chronicle);
+		Criteria criteria = Criteria.where("_id").is(chronicle.getId());
+		Query query = Query.query(criteria);
+		Update update = Update.update("entries", chronicle.getEntries());
+		mongoOperations.updateFirst(query, update, chronicle.getClass());
 	}
 
 	@Override
@@ -56,5 +60,10 @@ public class ChronicleDaoImpl implements ChronicleDao {
 			infoDao.deleteEntry(entry.getTopic());
 		}
 		return chronicle;
+	}
+
+	@Override
+	public void insertChronicle(Chronicle chronicle) {
+		mongoOperations.save(chronicle);
 	}
 }

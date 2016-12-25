@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoCo
 @SpringBootApplication(exclude = { EmbeddedMongoAutoConfiguration.class })
 public class RpDashApplication {
 
+	protected RpDashApplication() {
+		//implicit constructor
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RpDashApplication.class, args);
 	}

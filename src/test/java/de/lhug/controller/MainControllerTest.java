@@ -1,6 +1,7 @@
 package de.lhug.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -34,5 +35,14 @@ public class MainControllerTest {
 		mockMvc.perform(get(url))
 				.andExpect(status().isOk())
 				.andExpect(view().name("mainPage"));
+	}
+	
+	@Test
+	public void redirectMain() throws Exception {
+		String url = "/";
+		
+		mockMvc.perform(get(url))
+			.andExpect(status().is3xxRedirection())
+			.andExpect(redirectedUrl("/main"));
 	}
 }

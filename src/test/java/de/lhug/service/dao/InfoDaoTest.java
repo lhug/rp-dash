@@ -37,7 +37,7 @@ import de.lhug.utils.MongoUtils;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = InfoDaoTest.TestConfiguration.class)
 @EnableAutoConfiguration
-@TestPropertySource(properties = { "spring.data.mongodb.port=27019" })
+@TestPropertySource(properties = { "spring.data.mongodb.port=27022" })
 public class InfoDaoTest {
 
 	public static class TestConfiguration {

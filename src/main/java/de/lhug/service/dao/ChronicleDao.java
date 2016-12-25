@@ -14,4 +14,5 @@ public interface ChronicleDao {
 
 	List<Chronicle> getChronicles();
 
+	void insertChronicle(Chronicle chronicle);
 }
