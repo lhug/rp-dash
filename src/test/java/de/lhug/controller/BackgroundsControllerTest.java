@@ -84,6 +84,6 @@ public class BackgroundsControllerTest {
 		
 		mockMvc.perform(get(url))	
 			.andExpect(status().isOk())
-			.andExpect(view().name("fragments/charSheet"));
+			.andExpect(view().name("charSheet"));
 	}
 }

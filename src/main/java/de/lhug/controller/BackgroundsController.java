@@ -52,6 +52,6 @@ public class BackgroundsController {
 
 	@RequestMapping("/characters/{chronicle}/{character}")
 	public String showCharacterFragment() {
-		return "fragments/charSheet";
+		return "charSheet";
 	}
 }

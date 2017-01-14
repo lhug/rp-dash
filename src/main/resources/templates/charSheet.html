@@ -1,0 +1,422 @@
+<html xmlns:layout="https://ultraq.github.io/thymeleaf-layout-dialect" xmlns:th="http://www.thymeleaf.org" layout:decorator="/layout">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}" />
+    <script type="text/javascript" th:src="@{/js/charSheet.js}" ></script>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="row">
+			<div class="col-xs-12">
+				<form>
+					<div>
+						<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#p0" aria-controls="p0" role="tab" data-toggle="tab">Overview</a></li>
+							<li role="presentation"><a href="#p1" aria-controls="p1" role="tab" data-toggle="tab">P1</a></li>
+							<li role="presentation"><a href="#p2" aria-controls="p2" role="tab" data-toggle="tab">P2</a></li>
+							<li><a href="#p3" aria-controls="p3" role="tab" data-toggle="tab">P3</a></li>
+							<li><a href="#p4" aria-controls="p4" role="tab" data-toggle="tab">P4</a></li>
+						</ul>
+					</div>
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="p0">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>Character Infos</h4>
+								</div>
+								<div class="panel-body">
+									<div class="panel-group" id="characterPage0" role="tablist">
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="playerInfoHeading">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" data-parent="#characterPage0" href="#playerInfo">PLAYER INFO</a>
+												</h4>
+											</div>
+											<div id="playerInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="#playerInfoHeading">
+												<div class="panel-body">
+													<div class="form-group">
+														<label for="userName">USER NAME</label> <input id="userName" class="form-control" name="user" placeholder="user" value="Dood!" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="charName">CHARACTER NAME</label> <input id="charName" class="form-control" name="name" placeholder="name" value="Xue Yuen Da" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="chronicle">CHRONICLE</label> <input id="chronicle" class="form-control" name="chronicle" placeholder="chronicle" value="Faces of Dread" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="experience">EXPERIENCE</label> <input id="experience" class="form-control" name="experience" type="number" value="25" disabled="disabled" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="characterInfoHeading">
+												<h4 class="panel-title">
+													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#characterPage0" href="#characterInfo">CHARACTER INFO</a>
+												</h4>
+											</div>
+											<div id="characterInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledBy="#characterInfoHeading">
+												<div class="panel-body">
+													<div class="form-group">
+														<label for="nature">NATURE</label> <input id="nature" class="form-control" name="nature" placeholder="nature" value="Child" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="poNature">PO NATURE</label> <input id="poNature" class="form-control" name="poNature" placeholder="P'o Nature" value="The Monkey" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="demeanor">DEMEANOR</label> <input id="demeanor" class="form-control" name="demeanor" placeholder="demeanor" value="Teacher" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="balance">BALANCE</label> <input id="balance" class="form-control" name="balance" placeholder="balance" value="Yin" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="direction">DIRECTION</label> <input id="direction" class="form-control" name="direction" placeholder="direction" value="South" disabled="disabled" />
+													</div>
+													<div class="form-group">
+														<label for="wu">WU</label> <input id="wu" name="wu" class="form-control" placeholder="wu" value="Phoenix Blossom" disabled="disabled" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="soulInfoHeading">
+												<h4 class="panel-title">
+													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#characterPage0" href="#soulInfo">SOUL INFO</a>
+												</h4>
+											</div>
+											<div id="soulInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledBy="#soulInfoHeading">
+												<div class="panel-body">
+													<div class="list-group">
+														<div class="list-group-item active">
+															<h4 class="list-group-item-heading">SOUL BALANCE</h4>
+														</div>
+														<div class="list-group-item">
+															<div class="list group">
+																<div class="list-group-item">
+																	<label for="hunValue">HUN VALUE</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+																			<button type="button" class="btn btn-default dec">
+																				<span class="fa fa-minus-circle"></span>
+																			</button>
+																			<button type="button" class="btn btn-default inc" data-max="10">
+																				<span class="fa fa-plus-circle"></span>
+																			</button>
+																	</span> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 3} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																	</span> <input type="hidden" id="hunValue" name="page1.hun" value="3" />
+																</div>
+																<div class="list-group-item">
+																	<label for="poValue">PO VALUE</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+																			<button type="button" class="btn btn-default dec">
+																				<span class="fa fa-minus-circle"></span>
+																			</button>
+																			<button type="button" class="btn btn-default inc" data-max="10">
+																				<span class="fa fa-plus-circle"></span>
+																			</button>
+																	</span> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 5} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																	</span> <input type="hidden" id="poValue" name="page1.po" value="5" />
+																</div>
+															</div>
+														</div>
+														<div class="list-group-item active">
+															<h4 class="list-group-item-heading">CHI BALANCE</h4>
+														</div>
+														<div class="list-group-item">
+															<div class="list-group">
+																<div class="list-group-item">
+																	<label for="yinChi">YIN CHI</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+																			<button type="button" class="btn btn-default dec">
+																				<span class="fa fa-minus-circle"></span>
+																			</button>
+																			<button type="button" class="btn btn-default inc" data-max="10">
+																				<span class="fa fa-plus-circle"></span>
+																			</button>
+																	</span> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 4} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																	</span> <input type="hidden" id="yinChi" name="page1.yin" value="4" />
+																</div>
+																<div class="list-group-item">
+																	<label for="yangChi">YANG CHI</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+																			<button type="button" class="btn btn-default dec">
+																				<span class="fa fa-minus-circle"></span>
+																			</button>
+																			<button type="button" class="btn btn-default inc" data-max="10">
+																				<span class="fa fa-plus-circle"></span>
+																			</button>
+																	</span> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																	</span> <input type="hidden" id="yangChi" name="page1.yang" value="2" />
+																</div>
+															</div>
+														</div>
+														<div class="list-group-item active">
+															<h4 class="list-group-item-heading">WILL BALANCE</h4>
+														</div>
+														<div class="list-group-item">
+															<div class="list-group">
+																<div class="list-group-item">
+																	<label for="willpower">WILLPOWER</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+																			<button type="button" class="btn btn-default dec">
+																				<span class="fa fa-minus-circle"></span>
+																			</button>
+																			<button type="button" class="btn btn-default inc" data-max="10">
+																				<span class="fa fa-plus-circle"></span>
+																			</button>
+																	</span> <span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 7} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																	</span> <input type="hidden" id="willpower" name="page1.willpower" value="7" />
+																</div>
+																<div class="list-group-item">
+																	<label for="dharmaScore">DHARMA TYPE</label>
+																	<div class="pull-right">
+																		<div class="btn-group btn-group-sm" role="group">
+																			<button type="button" class="btn btn-default dec">
+																				<span class="fa fa-minus-circle"></span>
+																			</button>
+																			<button type="button" class="btn btn-default inc" data-max="10">
+																				<span class="fa fa-plus-circle"></span>
+																			</button>
+																		</div>
+																		<span th:each="int : ${#numbers.sequence(1, 10)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+																	</div>
+																	<input type="hidden" id="dharmaScore" name="page1.dharma" value="2" />
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="p1">
+							<div class="panel-group" id="abilities" role="tablist">
+								<div class="panel panel-default">
+									<div class="panel-heading" id="talentsHeading" role="tab">
+										<h4 class="panel-title">
+											<a role="button" data-toggle="collapse" data-parent="#abilities" href="#talents">TALENTS</a>
+										</h4>
+									</div>
+									<div class="panel-collapse collapse in" id="talents" role="tabpanel">
+										<div class="panel-body">
+											<div class="form-inline">
+												<div class="form-group">
+													<select id="talentSelector" class="form-control">
+														<option th:each="talent : ${T(de.lhug.entities.enums.Talents).values()}" th:value="${talent.name()}" th:text="#{__${talent.messageKey}__}">NAME</option>
+													</select>
+												</div>
+												<div class="form-group pull-right">
+													<label for="addTalent">ADD TALENT</label>
+													<button type="button" class="btn btn-default btn-sm addItem" id="addTalent">
+														<span class="fa fa-plus-circle"></span>
+													</button>
+												</div>
+											</div>
+											<div class="list-group">
+												<div class="list-group-item">
+													<label for="athletics">ATHLETICS</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="athletics" name="athletics" value="2" />
+												</div>
+												<div class="list-group-item">
+													<label for="dodge">DODGE</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 4} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="dodge" name="dodge" value="4" />
+												</div>
+												<div class="list-group-item">
+													<label for="leadership">LEADERSHIP</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 3} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="leadership" name="leadership" value="3" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading" id="skillsHeading" role="tab">
+										<h4 class="panel-title">
+											<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#skills">SKILLS</a>
+										</h4>
+									</div>
+									<div class="panel-collapse collapse" id="skills" role="tabpanel">
+										<div class="panel-body">
+											<div class="form-inline">
+												<div class="form-group">
+													<select id="skillSelector" class="form-control">
+														<option th:each="skill : ${T(de.lhug.entities.enums.Skills).values()}" th:value="${skill.name()}" th:text="#{__${skill.messageKey}__}">NAME</option>
+													</select>
+												</div>
+												<div class="form-group pull-right">
+													<label for="addSkill">ADD SKILL</label>
+													<button type="button" class="btn btn-default btn-sm addItem" id="addSkill">
+														<span class="fa fa-plus-circle"></span>
+													</button>
+												</div>
+											</div>
+											<div class="list-group">
+												<div class="list-group-item">
+													<label for="crafts1">CRAFTS (SEWING)</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 4} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="crafts1" name="crafts1" value="4" />
+												</div>
+												<div class="list-group-item">
+													<label for="crafts2">CRAFTS (CHI-WEAVING)</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 2} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="crafts2" name="crafts2" value="2" />
+												</div>
+												<div class="list-group-item">
+													<label for="martialArts1">MARTIAL ARTS (SOFT)</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1, 5)}" class="fa" th:classappend="${int le 5} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="martialArts1" name="martialArts1" value="5" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading" id="knowledgesHeading" role="tab">
+										<h4 class="panel-title">
+											<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#knowledges">KNOWLEDGES</a>
+										</h4>
+									</div>
+									<div class="panel-collapse collapse" id="knowledges" role="tabpanel">
+										<div class="panel-body">
+											<div class="form-inline">
+												<div class="form-group">
+													<select id="knowledgesSelector" class="form-control">
+														<option th:each="knowledge : ${T(de.lhug.entities.enums.Knowledges).values()}" th:value="${knowledge.name()}" th:text="#{__${knowledge.messageKey}__}">NAME</option>
+													</select>
+												</div>
+												<div class="form-group pull-right">
+													<label for="addKnowledge">ADD KNOWLEDGE</label>
+													<button type="button" class="btn btn-default btn-sm addItem" id="addKnowledge">
+														<span class="fa fa-plus-circle"></span>
+													</button>
+												</div>
+											</div>
+											<div class="list-group">
+												<div class="list-group-item">
+													<label for="enigmas">ENIGMAS</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+															<button type="button" class="btn btn-default dec">
+																<span class="fa fa-minus-circle"></span>
+															</button>
+															<button type="button" class="btn btn-default inc" data-max="5">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+													</span> <span th:each="int : ${#numbers.sequence(1,5)}" class="fa" th:classappend="${int le 5} ? 'fa-circle' : 'fa-circle-thin'"></span>
+													</span> <input type="hidden" id="enigmas" name="enigmas" value="5" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="p2">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>Secondary Character Infos</h4>
+								</div>
+								<div class="panel-group" role="tablist" id="otherTraits">
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="meritsHeading">
+											<h4 class="panel-title">
+												<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#meritsCollapse" aria-expanded="true" aria-controls="collapseOne">
+													Merits
+												</a>
+											</h4>
+										</div>
+										<div class="panel-collapse collapse in" role="tabpanel" id="meritsCollapse">
+											<div class="panel-body">
+												<div class="form-inline">
+													<div class="form-group">
+														<input id="merit" class="form-control"/>
+														<input id="meritValue" type="number" min="1" max="5" class="form-control" />
+													</div>
+													<div class="form-group pull-right">
+														<label for="addMerit" th:text="#{charsheet.add.merit}">ADD MERIT</label>
+														<button type="button" class="btn btn-default btn-sm addItem" id="addMerit">
+															<span class="fa fa-plus-circle"></span>
+														</button>
+													</div>
+												</div>
+												<div class="list-group">
+													<div class="list-group-item">
+														<span>Resources</span><span class="pull-right">3</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab" id="flawsHeading">
+											<h4 class="panel-title">
+												<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#flawsCollapse">
+													Flaws
+												</a>
+											</h4>
+										</div>
+										<div class="panel-collapse collapse" role="tabpanel" id="flawsCollapse">
+											<div class="panel-body">
+												<div class="form-inline">
+													<div class="form-group">
+														<input id="flaw" class="form-control" />
+														<input id="flawValue" class="form-control" type="number" min="1" max="5" />
+													</div>
+													<div class="form-group pull-right">
+														<label for="addFlaw" th:text="#{charsheet.add.flaw}">ADD FLAW</label>
+														<button type="button" class="btn btn-default btn-sm addItem" id="addFlaw">
+															<span class="fa fa-plus-circle"></span>
+														</button>
+													</div>
+												</div>
+												<div class="list-group">
+													<div class="list-group-item">
+														<span>Superstitious</span><span class="pull-right">5</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
