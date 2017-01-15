@@ -9,7 +9,7 @@ function initialize() {
 
 function addValueButtonEvents() {
 	addIncBtnEvents();
-	addDecBtnEvents();	
+	addDecBtnEvents();
 }
 
 function addIncBtnEvents() {
@@ -85,7 +85,7 @@ function addItemEvents() {
 		var btn = $(this);
 		var input = btn.closest(".form-inline").find("select, input");
 		var listItem = btn.closest(".form-inline").next();
-		if (input.size() == 1) {
+		if (input.first().is('select')) {
 			handleSelect(input.find("option"), listItem)
 		} else {
 			handleInput(input, listItem);
@@ -96,24 +96,28 @@ function addItemEvents() {
 function handleInput(input, listItem) {
 	if (input.size() > 1) {
 		var values = [];
-		for (; input.length >= 1;) {
+		while (input.length >= 1) {
 			values.push(input.val());
 			input.splice(0, 1);
 		}
 		addStaticItem(values[0], values[1], listItem);
+	} else {
+		addSkill(input.val(), listItem);
 	}
 }
 
 function addStaticItem(name, value, list) {
-	var template = '<div class="list-group-item">'
-		+'<span>ITEMNAME</span> <span class="pull-right">ITEMVALUE</span>'
-		+ '<input type="hidden" name="meritName" value="ITEMNAME" />'
-		+ '<input type="hidden" name="meritValue" value="ITEMVALUE" />'
-		+'</div>';
-	
+	if (!isNaN(parseInt(value, 10))) {
+		var template = '<div class="list-group-item">'
+				+ '<span>ITEMNAME</span> <span class="pull-right">ITEMVALUE</span>'
+				+ '<input type="hidden" name="meritName" value="ITEMNAME" />'
+				+ '<input type="hidden" name="meritValue" value="ITEMVALUE" />'
+				+ '</div>';
+
 		template = template.replace(/ITEMNAME/g, name);
 		template = template.replace(/ITEMVALUE/g, value);
 		list.append(template);
+	}
 }
 
 function handleSelect(options, listItem) {
