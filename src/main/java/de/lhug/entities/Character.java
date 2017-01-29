@@ -1,12 +1,25 @@
 package de.lhug.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.data.annotation.Id;
 
+import de.lhug.entities.character.Abilities;
+import de.lhug.entities.character.Attributes;
+import de.lhug.entities.character.BackgroundValues;
 import de.lhug.entities.enums.Dharma;
+import de.lhug.entities.enums.IAbility;
+import de.lhug.entities.enums.Knowledges;
+import de.lhug.entities.enums.Skills;
+import de.lhug.entities.enums.Talents;
+import lombok.Data;
 
+@Data
 public class Character {
 
 	@Id
@@ -25,109 +38,19 @@ public class Character {
 	private Dharma dharma;
 
 	private List<Dharma> lostDharmas = new ArrayList<>();
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getChronicle() {
-		return chronicle;
-	}
-
-	public void setChronicle(String chronicle) {
-		this.chronicle = chronicle;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(String player) {
-		this.player = player;
-	}
-
-	public String getHunNature() {
-		return hunNature;
-	}
-
-	public void setHunNature(String hunNature) {
-		this.hunNature = hunNature;
-	}
-
-	public String getPoNature() {
-		return poNature;
-	}
-
-	public void setPoNature(String poNature) {
-		this.poNature = poNature;
-	}
-
-	public String getDemeanor() {
-		return demeanor;
-	}
-
-	public void setDemeanor(String demeanor) {
-		this.demeanor = demeanor;
-	}
-
-	public String getBalance() {
-		return balance;
-	}
-
-	public void setBalance(String balance) {
-		this.balance = balance;
-	}
-
-	public String getDirection() {
-		return direction;
-	}
-
-	public void setDirection(String direction) {
-		this.direction = direction;
-	}
-
-	public String getWu() {
-		return wu;
-	}
-
-	public void setWu(String wu) {
-		this.wu = wu;
-	}
-
-	public List<Dharma> getLostDharmas() {
-		return lostDharmas;
-	}
-
-	public void setLostDharmas(List<Dharma> lostDharmas) {
-		this.lostDharmas = lostDharmas;
-	}
-
-	public void setDharma(Dharma dharma) {
-		this.dharma = dharma;
-	}
-
-	public Dharma getDharma() {
-		return dharma;
-	}
+	
+	private int hunValue;
+	private int poValue;
+	private int yinChi;
+	private int yangChi;
+	private int willpower;
+	private int dharmaScore;
+	private int experience;
+	
+	private Abilities abilities;
+	private BackgroundValues backgroundValues;
+	private Attributes attributes;
+	
+	private Map<Date, String> history;
 
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.springframework.org/security/tags">
+<body>
+
+	<!-- Dotted Value component
+	skillName = the name of the skill/attribute to set
+	skill = the skill value
+	maxValue = the maximum value of the component
+	displayName = the message key for the displayed name 
+	-->
+	<div th:fragment="dotted-value" th:each="entry : ${skill}" class="list-group-item" th:with="spec = (${entry.key} eq 'none' or ${#strings.isEmpty(entry.key)}) ? '' : '(' + ${entry.key} + ')'">
+		<label th:for="${entry.key}"> <span th:text="#{${displayName}(${spec})}">SKILL NAME</span><input type="text" class="spec" /></label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+				<button type="button" class="btn btn-default dec">
+					<span class="fa fa-minus-circle"></span>
+				</button>
+				<button type="button" class="btn btn-default inc" th:attr="data-max=${maxValue}">
+					<span class="fa fa-plus-circle"></span>
+				</button>
+		</span> <span th:each="int : ${#numbers.sequence(1, maxValue)}" class="fa" th:classappend="${int le entry.value} ? 'fa-circle' : 'fa-circle-thin'"></span>
+		</span> <input type="hidden" th:id="${entry.key}" th:field="*{__${skillName}__[__${entry.key}__]}" th:value="${entry.value}" />
+	</div>
+
+	<div th:fragment="dotted-value-single" class="list-group-item">
+		<label th:for="${skillName}" th:text="#{${displayName}}">SKILL NAME</label> <span class="pull-right"> <span class="btn-group btn-group-sm" role="group">
+				<button type="button" class="btn btn-default dec">
+					<span class="fa fa-minus-circle"></span>
+				</button>
+				<button type="button" class="btn btn-default inc" th:attr="data-max=${maxValue}">
+					<span class="fa fa-plus-circle"></span>
+				</button>
+		</span> <span th:each="int : ${#numbers.sequence(1, maxValue)}" class="fa" th:classappend="${int le currValue} ? 'fa-circle' : 'fa-circle-thin'"></span>
+		</span> <input type="hidden" th:id="${skillName}" th:field="*{__${skillName}__}" th:value="${currValue}" />
+	</div>
+</body>
+</html>

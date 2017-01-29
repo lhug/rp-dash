@@ -5,11 +5,28 @@ $(function() {
 function initialize() {
 	addValueButtonEvents();
 	addItemEvents();
+	addSpecializationEvents();
 }
 
 function addValueButtonEvents() {
 	addIncBtnEvents();
 	addDecBtnEvents();
+}
+
+function addSpecializationEvents() {
+	addInputHandler();
+}
+
+function addInputHandler() {
+	$('.spec').off().keyup(function(e) {
+		e.preventDefault();
+		var _this = $(this);
+		var parent = getBtnParent(_this);
+		var input = parent.find('input[type=hidden]');
+		var value = _this.val();
+		var name = input.attr('name');
+		input.attr('name', name.replace(/\[.*\]/g, "[" + value + "]"));
+	});
 }
 
 function addIncBtnEvents() {
