@@ -65,7 +65,7 @@ public class BackgroundsController {
 		c.setDemeanor("Teacher");
 		c.setBalance("Yin");
 		c.setDirection("South");
-		c.setWu("Phaenox Blossom");
+		c.setWu("Phoenix Blossom");
 		c.setYinChi(4);
 		c.setYangChi(2);
 		c.setWillpower(7);
@@ -89,7 +89,7 @@ public class BackgroundsController {
 	}
 	
 	@RequestMapping(value = "/characters/{chronicle}/{character}", method=RequestMethod.POST)
-	public String saveCharacter(Character character){
+	public String saveCharacter(Character character, Model model){
 		character.getBalance();
 		return "charSheet";
 		

@@ -31,5 +31,10 @@
 		</span> <span th:each="int : ${#numbers.sequence(1, maxValue)}" class="fa" th:classappend="${int le currValue} ? 'fa-circle' : 'fa-circle-thin'"></span>
 		</span> <input type="hidden" th:id="${skillName}" th:field="*{__${skillName}__}" th:value="${currValue}" />
 	</div>
+	
+	<div th:fragment="numeric-value" class="list-group-item">
+		<span th:text="${entry.key}">VALUE</span><span class="pull-right" th:text="${entry.value}">VALUE</span>
+		<input type="hidden" th:field="*{__${fieldName}__[__${entry.key}__]}" th:value="${entry.value}" />
+	</div>
 </body>
 </html>

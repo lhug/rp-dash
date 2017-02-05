@@ -47,6 +47,4 @@ public class Abilities {
 	private Map<String, Integer> politics = new HashMap<>();
 	private Map<String, Integer> rituals = new HashMap<>();
 	private Map<String, Integer> science = new HashMap<>();
-	
-	private Map<String, Integer> secondary = new HashMap<>();
 }

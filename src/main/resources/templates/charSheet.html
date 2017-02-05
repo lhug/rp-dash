@@ -10,9 +10,9 @@
 				<form th:action="@{''}" th:object="${character}" method="post" enctype="multipart/form-data">
 					<div>
 						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#p0" aria-controls="p0" role="tab" data-toggle="tab">Overview</a></li>
-							<li role="presentation"><a href="#p1" aria-controls="p1" role="tab" data-toggle="tab">P1</a></li>
-							<li role="presentation"><a href="#p2" aria-controls="p2" role="tab" data-toggle="tab">P2</a></li>
+							<li role="presentation" class="active"><a href="#p0" aria-controls="p0" role="tab" data-toggle="tab" th:text="#{charsheet.tabs.overview}">OVERVIEW</a></li>
+							<li role="presentation"><a href="#p1" aria-controls="p1" role="tab" data-toggle="tab" th:text="#{charsheet.tabs.abilities}">ABILITIES</a></li>
+							<li role="presentation"><a href="#p2" aria-controls="p2" role="tab" data-toggle="tab" th:text="#{charsheet.tabs.backgrounds}">P2</a></li>
 							<li><a href="#p3" aria-controls="p3" role="tab" data-toggle="tab">P3</a></li>
 							<li><a href="#p4" aria-controls="p4" role="tab" data-toggle="tab">P4</a></li>
 						</ul>
@@ -21,29 +21,29 @@
 						<div role="tabpanel" class="tab-pane active" id="p0">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>Character Infos</h4>
+									<h4 th:text="#{charsheet.tabs.overview}">OVERVIEW</h4>
 								</div>
 								<div class="panel-body">
 									<div class="panel-group" id="characterPage0" role="tablist">
 										<div class="panel panel-default">
 											<div class="panel-heading" role="tab" id="playerInfoHeading">
 												<h4 class="panel-title">
-													<a role="button" data-toggle="collapse" data-parent="#characterPage0" href="#playerInfo">PLAYER INFO</a>
+													<a role="button" data-toggle="collapse" data-parent="#characterPage0" href="#playerInfo" th:text="#{charsheet.overview.player.label}">PLAYER INFO</a>
 												</h4>
 											</div>
 											<div id="playerInfo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="#playerInfoHeading">
 												<div class="panel-body">
 													<div class="form-group">
-														<label for="userName">USER NAME</label> <input id="userName" class="form-control" th:field="*{user}" placeholder="user" disabled="disabled" />
+														<label for="userName" th:text="#{charsheet.overview.player.user}">USER NAME</label> <input id="userName" class="form-control" th:field="*{user}" placeholder="user" />
 													</div>
 													<div class="form-group">
-														<label for="charName">CHARACTER NAME</label> <input id="charName" class="form-control" th:field="*{name}" placeholder="name" disabled="disabled" />
+														<label for="charName" th:text="#{charsheet.overview.player.character}">CHARACTER NAME</label> <input id="charName" class="form-control" th:field="*{name}" placeholder="name" />
 													</div>
 													<div class="form-group">
-														<label for="chronicle">CHRONICLE</label> <input id="chronicle" class="form-control" th:field="*{chronicle}" placeholder="chronicle" disabled="disabled" />
+														<label for="chronicle" th:text="#{charsheet.overview.player.chronicle}">CHRONICLE</label> <input id="chronicle" class="form-control" th:field="*{chronicle}" placeholder="chronicle" />
 													</div>
 													<div class="form-group">
-														<label for="experience">EXPERIENCE</label> <input id="experience" class="form-control" th:field="*{experience}" type="number" disabled="disabled" />
+														<label for="experience" th:text="#{charsheet.overview.player.experience}">EXPERIENCE</label> <input id="experience" class="form-control" th:field="*{experience}" type="number" />
 													</div>
 												</div>
 											</div>
@@ -51,28 +51,28 @@
 										<div class="panel panel-default">
 											<div class="panel-heading" role="tab" id="characterInfoHeading">
 												<h4 class="panel-title">
-													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#characterPage0" href="#characterInfo">CHARACTER INFO</a>
+													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#characterPage0" href="#characterInfo" th:text="#{charsheet.overview.character.label}">CHARACTER INFO</a>
 												</h4>
 											</div>
 											<div id="characterInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledBy="#characterInfoHeading">
 												<div class="panel-body">
 													<div class="form-group">
-														<label for="nature">NATURE</label> <input id="nature" class="form-control" th:field="*{hunNature}" placeholder="nature" disabled="disabled" />
+														<label for="nature" th:text="#{charsheet.overview.character.nature}">NATURE</label> <input id="nature" class="form-control" th:field="*{hunNature}" placeholder="nature" />
 													</div>
 													<div class="form-group">
-														<label for="poNature">PO NATURE</label> <input id="poNature" class="form-control" th:field="*{poNature}" placeholder="P'o Nature" disabled="disabled" />
+														<label for="poNature" th:text="#{charsheet.overview.character.ponature}">PO NATURE</label> <input id="poNature" class="form-control" th:field="*{poNature}" placeholder="P'o Nature" />
 													</div>
 													<div class="form-group">
-														<label for="demeanor">DEMEANOR</label> <input id="demeanor" class="form-control" th:field="*{demeanor}" placeholder="demeanor" disabled="disabled" />
+														<label for="demeanor" th:text="#{charsheet.overview.character.demeanor}">DEMEANOR</label> <input id="demeanor" class="form-control" th:field="*{demeanor}" placeholder="demeanor" />
 													</div>
 													<div class="form-group">
-														<label for="balance">BALANCE</label> <input id="balance" class="form-control" th:field="*{balance}" placeholder="balance" disabled="disabled" />
+														<label for="balance" th:text="#{charsheet.overview.character.balance}">BALANCE</label> <input id="balance" class="form-control" th:field="*{balance}" placeholder="balance" />
 													</div>
 													<div class="form-group">
-														<label for="direction">DIRECTION</label> <input id="direction" class="form-control" th:field="*{direction}" placeholder="direction" disabled="disabled" />
+														<label for="direction" th:text="#{charsheet.overview.character.direction}">DIRECTION</label> <input id="direction" class="form-control" th:field="*{direction}" placeholder="direction" />
 													</div>
 													<div class="form-group">
-														<label for="wu">WU</label> <input id="wu" th:field="*{wu}" class="form-control" placeholder="wu" disabled="disabled" />
+														<label for="wu" th:text="#{charsheet.overview.character.wu}">WU</label> <input id="wu" th:field="*{wu}" class="form-control" placeholder="wu" />
 													</div>
 												</div>
 											</div>
@@ -80,14 +80,14 @@
 										<div class="panel panel-default">
 											<div class="panel-heading" role="tab" id="soulInfoHeading">
 												<h4 class="panel-title">
-													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#characterPage0" href="#soulInfo">SOUL INFO</a>
+													<a class="collapsed" role="button" data-toggle="collapse" data-parent="#characterPage0" href="#soulInfo" th:text="#{charsheet.overview.soul.label}">SOUL INFO</a>
 												</h4>
 											</div>
 											<div id="soulInfo" class="panel-collapse collapse" role="tabpanel" aria-labelledBy="#soulInfoHeading">
 												<div class="panel-body">
 													<div class="list-group">
 														<div class="list-group-item active">
-															<h4 class="list-group-item-heading">SOUL BALANCE</h4>
+															<h4 class="list-group-item-heading" th:text="#{charsheet.overview.soul.balance}">SOUL BALANCE</h4>
 														</div>
 														<div class="list-group-item">
 															<div class="list group">
@@ -96,7 +96,7 @@
 															</div>
 														</div>
 														<div class="list-group-item active">
-															<h4 class="list-group-item-heading">CHI BALANCE</h4>
+															<h4 class="list-group-item-heading" th:text="#{charsheet.overview.soul.chi}">CHI BALANCE</h4>
 														</div>
 														<div class="list-group-item">
 															<div class="list-group">
@@ -105,13 +105,14 @@
 															</div>
 														</div>
 														<div class="list-group-item active">
-															<h4 class="list-group-item-heading">WILL BALANCE</h4>
+															<h4 class="list-group-item-heading" th:text="#{charsheet.overview.soul.will}">WILL BALANCE</h4>
 														</div>
 														<div class="list-group-item">
 															<div class="list-group">
 																<div th:replace="components :: dotted-value-single(skillName='willpower', maxValue=10, currValue=7, displayName='soul.willpower')"></div>
 																<div th:replace="components :: dotted-value-single(skillName='dharmaScore', maxValue=10, currValue=2, displayName=*{dharma.name})"></div>
 															</div>
+															<input type="hidden" th:field="*{dharma}" />
 														</div>
 													</div>
 												</div>
@@ -124,91 +125,100 @@
 						<div role="tabpanel" class="tab-pane" id="p1">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 th:text="Abilities">ABILITIES</h4>
+									<h4 th:text="#{charsheet.tabs.abilities}">ABILITIES</h4>
 								</div>
 								<div class="panel-body">
 									<div class="panel-group" id="abilities" role="tablist">
 										<div class="panel panel-default">
 											<div class="panel-heading" id="talentsHeading" role="tab">
 												<h4 class="panel-title">
-													<a role="button" data-toggle="collapse" data-parent="#abilities" href="#talents">TALENTS</a>
+													<a role="button" data-toggle="collapse" data-parent="#abilities" href="#talents" th:text="#{charsheet.abilities.talents.label}">TALENTS</a>
 												</h4>
 											</div>
 											<div class="panel-collapse collapse in" id="talents" role="tabpanel">
 												<div class="panel-body">
+													<!--/*/ <th:block th:with="talents = ${T(de.lhug.entities.enums.Talents).values()}"> /*/-->
 													<div class="form-inline">
 														<div class="form-group">
 															<select id="talentSelector" class="form-control">
-																<option th:each="talent : ${T(de.lhug.entities.enums.Talents).values()}" th:value="${talent.name()}" th:text="#{__${talent.messageKey}__('')}">NAME</option>
+																<option th:each="talent : ${talents}" th:value="${talent.name()}" th:text="#{__${talent.messageKey}__('')}">NAME</option>
 															</select>
 														</div>
 														<div class="form-group pull-right">
-															<label for="addTalent">ADD TALENT</label>
+															<label for="addTalent" th:text="#{charsheet.add.talent}">ADD TALENT</label>
 															<button type="button" class="btn btn-default btn-sm addItem" id="addTalent">
 																<span class="fa fa-plus-circle"></span>
 															</button>
 														</div>
 													</div>
 													<div class="list-group">
-														<div th:replace="components :: dotted-value(skill=*{abilities.athletics}, skillName='abilities.athletics', maxValue=5, currValue=2, displayName='talents.athletics', character=${character})"></div>
-														<div th:replace="components :: dotted-value(skill=*{abilities.dodge}, skillName='abilities.dodge', maxValue=5, currValue=4, displayName='talents.dodge')"></div>
-														<div th:replace="components :: dotted-value(skill=*{abilities.leadership}, skillName='abilities.leadership', maxValue=5, currValue=2, displayName='talents.leadership')"></div>
+														<div th:each="talent : ${talents}">
+															<div th:replace="components :: dotted-value(skill=*{__${talent.messageKey}__}, skillName=${talent.messageKey}, maxValue=5, displayName=${talent.messageKey})">TALENTS</div>
+														</div>
 													</div>
+													<!--/*/ </th:block> /*/-->
 												</div>
 											</div>
 										</div>
 										<div class="panel panel-default">
 											<div class="panel-heading" id="skillsHeading" role="tab">
 												<h4 class="panel-title">
-													<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#skills">SKILLS</a>
+													<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#skills" th:text="#{charsheet.abilities.skills.label}">SKILLS</a>
 												</h4>
 											</div>
 											<div class="panel-collapse collapse" id="skills" role="tabpanel">
 												<div class="panel-body">
+													<!--/*/ <th:block th:with="skills = ${T(de.lhug.entities.enums.Skills).values()}"> /*/-->
 													<div class="form-inline">
 														<div class="form-group">
 															<select id="skillSelector" class="form-control">
-																<option th:each="skill : ${T(de.lhug.entities.enums.Skills).values()}" th:value="${skill.name()}" th:text="#{__${skill.messageKey}__('')}">NAME</option>
+																<option th:each="skill : ${skills}" th:value="${skill.name()}" th:text="#{__${skill.messageKey}__('')}">NAME</option>
 															</select>
 														</div>
 														<div class="form-group pull-right">
-															<label for="addSkill">ADD SKILL</label>
+															<label for="addSkill" th:text="#{charsheet.add.skill}">ADD SKILL</label>
 															<button type="button" class="btn btn-default btn-sm addItem" id="addSkill">
 																<span class="fa fa-plus-circle"></span>
 															</button>
 														</div>
 													</div>
 													<div class="list-group">
-														<div th:replace="components :: dotted-value(skill=*{abilities.crafts}, skillName='abilities.crafts', maxValue=5, currValue=4, displayName='skills.crafts')"></div>
-														<div th:replace="components :: dotted-value(skill=*{abilities.martialArts}, skillName='abilities.martialArts', maxValue=5, currValue=5, displayName='skills.martialArts')"></div>
+														<div th:each="skill : ${skills}">
+															<div th:replace="components :: dotted-value(skill=*{__${skill.messageKey}__}, skillName=${skill.messageKey}, maxValue=5, displayName=${skill.messageKey})"></div>
+														</div>
 													</div>
+													<!--/*/ </th:block> /*/-->
 												</div>
 											</div>
 										</div>
 										<div class="panel panel-default">
 											<div class="panel-heading" id="knowledgesHeading" role="tab">
 												<h4 class="panel-title">
-													<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#knowledges">KNOWLEDGES</a>
+													<a role="button" class="collapsed" data-toggle="collapse" data-parent="#abilities" href="#knowledges" th:text="#{charsheet.abilities.knowledges.label}">KNOWLEDGES</a>
 												</h4>
 											</div>
 											<div class="panel-collapse collapse" id="knowledges" role="tabpanel">
 												<div class="panel-body">
+													<!--/*/ <th:block th:with="knowledges = ${T(de.lhug.entities.enums.Knowledges).values()}"> /*/-->
 													<div class="form-inline">
 														<div class="form-group">
 															<select id="knowledgesSelector" class="form-control">
-																<option th:each="knowledge : ${T(de.lhug.entities.enums.Knowledges).values()}" th:value="${knowledge.name()}" th:text="#{__${knowledge.messageKey}__('')}">NAME</option>
+																<option th:each="knowledge : ${knowledges}" th:value="${knowledge.name()}" th:text="#{__${knowledge.messageKey}__('')}">NAME</option>
 															</select>
 														</div>
 														<div class="form-group pull-right">
-															<label for="addKnowledge">ADD KNOWLEDGE</label>
+															<label for="addKnowledge" th:text="#{charsheet.add.knowledge}">ADD KNOWLEDGE</label>
 															<button type="button" class="btn btn-default btn-sm addItem" id="addKnowledge">
 																<span class="fa fa-plus-circle"></span>
 															</button>
 														</div>
 													</div>
 													<div class="list-group">
-														<div th:replace="components :: dotted-value(skill=*{abilities.enigmas}, skillName='abilities.enigmas', maxValue=5, currValue=5, displayName='knowledges.enigmas')"></div>
+														<div th:each="knowledge : ${knowledges}">
+															<div th:replace="components :: dotted-value(skill=*{__${knowledge.messageKey}__}, skillName=${knowledge.messageKey}, maxValue=5, displayName=${knowledge.messageKey})"></div>
+														</div>
 													</div>
+													<!--/*/ </th:block> /*/-->
 												</div>
 											</div>
 										</div>
@@ -219,89 +229,122 @@
 						<div role="tabpanel" class="tab-pane" id="p2">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>Secondary Character Infos</h4>
+									<h4 th:text="#{charsheet.tabs.backgrounds}">Secondary Character Infos</h4>
 								</div>
-								<div class="panel-group" role="tablist" id="otherTraits">
-									<div class="panel panel-default">
-										<div class="panel-heading" role="tab" id="meritsHeading">
-											<h4 class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#meritsCollapse" aria-expanded="true" aria-controls="collapseOne"> Merits </a>
-											</h4>
+								<div class="panel-body">
+									<div class="panel-group" role="tablist" id="otherTraits">
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="meritsHeading">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#meritsCollapse" aria-expanded="true" aria-controls="collapseOne" th:text="#{charsheet.backgrounds.merits}">MERITS</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse in" role="tabpanel" id="meritsCollapse">
+												<div class="panel-body">
+													<div class="form-inline">
+														<div class="form-group">
+															<input id="merit" class="form-control" /> <input id="meritValue" type="number" min="1" max="5" class="form-control" />
+														</div>
+														<div class="form-group pull-right">
+															<label for="addMerit" th:text="#{charsheet.add.merit}">ADD MERIT</label>
+															<button type="button" class="btn btn-default btn-sm addItem" id="addMerit">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+														</div>
+													</div>
+													<div class="list-group">
+														<div th:each="entry : *{backgroundValues.merits}">
+															<div th:replace="components :: numeric-value(entry = ${entry}, fieldName='backgroundValues.merits')">MERITS</div>
+														</div>
+													</div>
+												</div>
+											</div>
 										</div>
-										<div class="panel-collapse collapse in" role="tabpanel" id="meritsCollapse">
-											<div class="panel-body">
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="flawsHeading">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#flawsCollapse" th:text="#{charsheet.backgrounds.flaws}">FLAWS</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse" role="tabpanel" id="flawsCollapse">
+												<div class="panel-body">
+													<div class="form-inline">
+														<div class="form-group">
+															<input id="flaw" class="form-control" /> <input id="flawValue" class="form-control" type="number" min="1" max="5" />
+														</div>
+														<div class="form-group pull-right">
+															<label for="addFlaw" th:text="#{charsheet.add.flaw}">ADD FLAW</label>
+															<button type="button" class="btn btn-default btn-sm addItem" id="addFlaw">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+														</div>
+													</div>
+													<div class="list-group">
+														<div th:each="entry : *{backgroundValues.flaws}">
+															<div th:replace="components :: numeric-value(entry = ${entry}, fieldName='backgroundValues.flaws')">MERITS</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="backgroundsHeading">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#backgroundsCollapse" th:text="#{charsheet.backgrounds.label}">BACKGROUNDS</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse" role="tabpanel" id="backgroundsCollapse">
+												<div class="panel-body">
+													<div class="form-inline">
+														<div class="form-group">
+															<input id="background" class="form-control" /> <input id="backgroundValue" class="form-control" type="number" min="1" max="5" />
+														</div>
+														<div class="form-group pull-right">
+															<label for="addBackground" th:text="#{charsheet.add.background}">ADD BACKGROUND</label>
+															<button type="button" class="btn btn-default btn-sm addItem" id="addBackground">
+																<span class="fa fa-plus-circle"></span>
+															</button>
+														</div>
+													</div>
+													<div class="list-group">
+														<div th:each="entry : *{backgroundValues.backgrounds}">
+															<div th:replace="components :: numeric-value(entry = ${entry}, fieldName='backgroundValues.backgrounds')">MERITS</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="panel panel-default">
+											<div class="panel-heading" role="tab" id="secondaryHeading">
+												<h4 class="panel-title">
+													<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#secondaryCollapse" th:text="#{charsheet.secondary.label}">SECONDARY SKILLS</a>
+												</h4>
+											</div>
+											<div class="panel-collapse collapse" role="tabpanel" id="secondaryCollapse">
 												<div class="form-inline">
 													<div class="form-group">
-														<input id="merit" class="form-control" /> <input id="meritValue" type="number" min="1" max="5" class="form-control" />
+														<input id="secSkill" class="form-control" />
 													</div>
 													<div class="form-group pull-right">
-														<label for="addMerit" th:text="#{charsheet.add.merit}">ADD MERIT</label>
-														<button type="button" class="btn btn-default btn-sm addItem" id="addMerit">
+														<label for="addSecSkill">Add Skill</label>
+														<button type="button" class="btn btn-default btn-sm addItem" id="addSecSkill">
 															<span class="fa fa-plus-circle"></span>
 														</button>
 													</div>
 												</div>
 												<div class="list-group">
-													<div class="list-group-item">
-														<span>Resources</span><span class="pull-right">3</span>
+													<div th:each="entry : *{backgroundValues.secondary}">
+														<div th:replace="components :: numeriv-value(entry = ${entry}, fieldName='backgroundValues.secondary')"></div>
 													</div>
 												</div>
 											</div>
-										</div>
-									</div>
-									<div class="panel panel-default">
-										<div class="panel-heading" role="tab" id="flawsHeading">
-											<h4 class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#flawsCollapse"> Flaws </a>
-											</h4>
-										</div>
-										<div class="panel-collapse collapse" role="tabpanel" id="flawsCollapse">
-											<div class="panel-body">
-												<div class="form-inline">
-													<div class="form-group">
-														<input id="flaw" class="form-control" /> <input id="flawValue" class="form-control" type="number" min="1" max="5" />
-													</div>
-													<div class="form-group pull-right">
-														<label for="addFlaw" th:text="#{charsheet.add.flaw}">ADD FLAW</label>
-														<button type="button" class="btn btn-default btn-sm addItem" id="addFlaw">
-															<span class="fa fa-plus-circle"></span>
-														</button>
-													</div>
-												</div>
-												<div class="list-group">
-													<div class="list-group-item">
-														<span>Superstitious</span><span class="pull-right">5</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="panel panel-default">
-										<div class="panel-heading" role="tab" id="secondaryHeading">
-											<h4 class="panel-title">
-												<a role="button" data-toggle="collapse" data-parent="#otherTraits" href="#secondaryCollapse"> Secondary Skills </a>
-											</h4>
-										</div>
-										<div class="panel-collapse collapse" role="tabpanel" id="secondaryCollapse">
-											<div class="form-inline">
-												<div class="form-group">
-													<input id="secSkill" class="form-control" />
-												</div>
-												<div class="form-group pull-right">
-													<label for="addSecSkill">Add Skill</label>
-													<button type="button" class="btn btn-default btn-sm addItem" id="addSecSkill">
-														<span class="fa fa-plus-circle"></span>
-													</button>
-												</div>
-											</div>
-											<div class="list-group"></div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-default" th:text="#{charSheet.save}">SAVE</button>
+					<button type="submit" class="btn btn-default" th:text="#{charsheet.save}">SAVE</button>
 				</form>
 			</div>
 		</div>
